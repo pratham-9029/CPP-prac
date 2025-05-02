@@ -1,5 +1,4 @@
 // 2. Bank Account System
-
 // Create a class BankAccount with accountNumber, holderName, and balance. Write functions for deposit, withdrawal, and balance display.
 
 #include <iostream>
@@ -23,10 +22,6 @@ public:
         cin >> this->acc_balance;
     }
 
-    void Display()
-    {
-    }
-
     void deposit()
     {
         int deposit;
@@ -39,33 +34,35 @@ public:
 
         cout << "----Deposit Done----" << endl;
 
-        cout << "Your updated balance is : " << acc_balance << endl;
-    }
-
+        cout <<"----Want to see balance,PRESS 3----"<<endl;
+     }
     void withdraw()
     {
         int withdraw;
         cout << "Your Current Balance : " << this->acc_balance << endl;
 
-        cout << "Enter Amount You want to Deposit : ";
+        cout << "Enter withdraw amount : ";
         cin >> withdraw;
 
-        acc_balance -= withdraw;
+        acc_balance = acc_balance - withdraw;
 
-        cout << "----Deposit Done----" << endl;
-
-        cout << "Your updated balance is : " << withdraw << endl;
+        cout << "----Withdraw Done----" << endl;
+        cout <<"----Want to see balance,PRESS 3----"<<endl;
+    }
+    void balance()
+    {
+        cout<<"------Done------"<<endl;
+        cout<<"Your Current Balance is : "<<acc_balance<<endl;
     }
 };
 
 int main()
 {
     int choice;
-
     BankAccount user;
 
     user.setaccount();
-
+    
     do
     {
         cout << "PRESS 1 FOR DEPOSIT" << endl;
@@ -75,9 +72,8 @@ int main()
 
         cout << "ENTER YOUR CHOICE : ";
         cin >> choice;
-    } while (choice != 0);
-
-    switch (choice)
+        
+        switch (choice)
     {
     case 1:
         user.deposit();
@@ -87,10 +83,13 @@ int main()
         user.withdraw();
         break;
     
+    case 3:
+        user.balance();
+    
     default:
         break;
     }
-
-
+    cout<<endl;
+    } while (choice != 0);
     return 0;
 }
